@@ -1,4 +1,4 @@
-# odoo12_my_pro
+# odoo12 learn
 整个项目的说明请参考博客地址：</br>
 <a href="https://www.cnblogs.com/SamNicole1809/p/10968113.html">odoo12 修行基础篇之 添加字段 （一）</a></br>
 <a href="https://www.cnblogs.com/SamNicole1809/p/10972645.html">odoo12 修行基础篇之 添加明细字段 （二）</a></br>
@@ -10,3 +10,4 @@
 <a href="https://www.cnblogs.com/SamNicole1809/p/13677648.html">odoo12 修行基础篇之 kanban （八）</a></br>
 <a href="https://www.cnblogs.com/SamNicole1809/p/13679112.html">odoo12 修行基础篇之 利用kanban做分析 点击跳转分析模型列表 （九）</a></br>
 目前基础篇已结束。
+项目没有建立章节的分支，见谅。
