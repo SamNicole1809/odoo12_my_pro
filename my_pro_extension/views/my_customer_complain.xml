@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!--在销售报告栏增加客户投诉按钮-->
+    <act_window id="action_my_customer_complaint"
+                name="客户投诉页"
+                res_model="my.customer.complain"
+    />
+    <menuitem
+            id="menu_my_customer_complaint"
+            name="客户投诉"
+            action="action_my_customer_complaint"
+            parent="sale.menu_sale_report"
+            sequence="5"
+    />
+
+    <!--给tree视图指定默认的筛选和分组条件-->
+    <record id="action_my_customer_complaint" model="ir.actions.act_window">
+        <field name="context">{'search_default_draft': 1}</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+    <!--form表单-->
+    <record id="view_my_customer_complain" model="ir.ui.view">
+        <field name="name">view.my.customer.complain</field>
+        <field name="model">my.customer.complain</field>
+        <field name="arch" type="xml">
+            <form string="Customer Complain">
+                <header>
+                    <button name="action_comfirm" string="确认" type="object"/>
+                    <button name="action_cancel" string="取消" type="object" confirm="确认取消?"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done,cancel"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group name="top">
+                        <group name="top_left">
+                            <field name="supplier_id"/>
+                            <field name="type_id"/>
+                        </group>
+                        <group name="top_right">
+                            <field name="customer_id"/>
+                            <field name="order_id"/>
+                        </group>
+                    </group>
+                    <group name="body">
+                        <field name="complains"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!--tree列表-->
+    <record id="tree_my_customer_complain" model="ir.ui.view">
+        <field name="name">tree.my.customer.complain</field>
+        <field name="model">my.customer.complain</field>
+        <field name="arch" type="xml">
+            <tree decoration-muted="state=='cancel'">
+                <field name="name"/>
+                <field name="customer_id"/>
+                <field name="supplier_id"/>
+                <field name="order_id"/>
+                <field name="complains"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--search视图-->
+    <record id="search_my_customer_complain" model="ir.ui.view">
+        <field name="name">search.my.customer.complain</field>
+        <field name="model">my.customer.complain</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="type_id"/>
+                <filter name="draft" string="未处理" domain="[('state', '=', 'draft')]"/>
+                <filter name="finish" string="完成" domain="[('state', '=', 'done')]"/>
+                <group>
+                    <filter string="状态" name="state" context="{'group_by':'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- kanban -->
+    <record id="kanban_my_customer_complain" model="ir.ui.view">
+        <field name="name">kanban.my.customer.complain</field>
+        <field name="model">my.customer.complain</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_dashboard o_emphasize_colors">
+                <field name="color"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="o_kanban_card_header oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_global_click">
+                            <div class="o_dropdown_kanban dropdown">
+                                <a class="dropdown-toggle btn"
+                                   data-toggle="dropdown" role="button"
+                                   aria-label="Dropdown menu"
+                                   title="Dropdown menu"
+                                   href="#">
+                                    <span class="fa fa-ellipsis-v"/>
+                                </a>
+                                <div class="dropdown-menu" role="menu">
+                                    <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                </div>
+                            </div>
+                            <div t-attf-class="o_kanban_card_header">
+                                <div class="o_kanban_card_header_title">
+                                    <div class="o_primary">
+                                        <field name="name"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- 批量确认 -->
+    <act_window id="action_my_customer_complain_multi_confirm"
+                name="批量确认"
+                src_model="my.customer.complain"
+                res_model="my.customer.complain.transient"
+                view_mode="form"
+                key2="client_action_multi"
+    />
+
+</odoo>

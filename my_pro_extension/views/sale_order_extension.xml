@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_order_form_modify" model="ir.ui.view">
+        <field name="name">view.order.form.modify</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- 增加``销售员``字段 -->
+            <xpath expr="//group/group/field[@name='partner_id']"
+                   position="after"
+            >
+                <field name="x_salesman"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_order_tree_modify" model="ir.ui.view">
+        <field name="name">view.order.form.modify</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+        <field name="arch" type="xml">
+            <!-- 增加``创建人``字段 -->
+            <xpath expr="//field[@name='date_order']"
+                   position="after"
+            >
+                <field name="create_uid"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_order_form_modify" model="ir.ui.view">
+        <field name="name">view.order.form.modify</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- 增加``销售员``字段 -->
+            <xpath expr="//group/group/field[@name='partner_id']"
+                   position="after"
+            >
+                <field name="x_salesman"/>
+            </xpath>
+            <!-- 在订单行中，增加``税额``字段 -->
+            <xpath expr="//tree/field[@name='tax_id']"
+                   position="after"
+            >
+                <field name="x_price_tax"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

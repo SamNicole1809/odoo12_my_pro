@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_my_customer_complain,my.customer.complain,model_my_customer_complain,,1,1,1,1
+access_my_customer_complain_type,my.customer.complain.type,model_my_customer_complain_type,,1,1,1,1
