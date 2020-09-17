@@ -9,5 +9,8 @@
 <a href="https://www.cnblogs.com/SamNicole1809/p/13674338.html">odoo12 修行基础篇之 记录批处理 （七）</a></br>
 <a href="https://www.cnblogs.com/SamNicole1809/p/13677648.html">odoo12 修行基础篇之 kanban （八）</a></br>
 <a href="https://www.cnblogs.com/SamNicole1809/p/13679112.html">odoo12 修行基础篇之 利用kanban做分析 点击跳转分析模型列表 （九）</a></br>
-目前基础篇已结束。
-项目没有建立章节的分支，见谅。
+目前基础篇已结束。</br>
+项目没有建立章节的分支，见谅。</br>
+提升篇已经开始了：</br>
+<a href="https://www.cnblogs.com/SamNicole1809/p/13683589.html">odoo12 修行提升篇之 异步定时任务 （一）</a></br>
+未完待续...
