@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="schedule_statistic_num_sum" model="ir.cron">
+        <field name="name">数据统计任务</field>
+        <field name="model_id" ref="model_my_schedule"/>
+        <field name="state">code</field>
+        <field name="code">model.schedule()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field eval="True" name="doall"/>
+        <field name="user_id" ref="base.user_root"/>
+    </record>
+
+</odoo>
