@@ -14,4 +14,5 @@
 提升篇已经开始了：</br>
 <a href="https://www.cnblogs.com/SamNicole1809/p/13683589.html">odoo12 修行提升篇之 异步定时任务 （一）</a></br>
 <a href="https://www.cnblogs.com/SamNicole1809/p/13684143.html">odoo12 修行提升篇之 常用的高阶函数 （二）</a></br>
+<a href="https://www.cnblogs.com/SamNicole1809/p/14544719.html">odoo12 修行提升篇之 自定义消息弹框 （三）</a></br>
 未完待续...
